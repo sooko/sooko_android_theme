@@ -1,0 +1,28 @@
+<Ml>:
+    navleft:navleft
+    sm:sm
+    NavigationDrawer:
+        anim_type:'slide_above_simple'
+        pos_hint:{"center_x":.5,"center_y":.5}
+        id:nd
+        NavLeft:
+            id:navleft
+        BoxLayout
+            orientation:"vertical"
+            TopNav
+                tittle:"Mqtt Client"
+                on_menu_press:nd.toggle_state(True)
+            ScreenManager
+                id:sm
+                Screen
+                    name:"account"
+                Screen
+                    name:"home"
+                Screen
+                    name:"server"
+                Screen
+                    name:"add widget"
+
+                
+                
+

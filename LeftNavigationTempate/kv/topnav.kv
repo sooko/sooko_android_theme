@@ -1,0 +1,24 @@
+<TopNav>
+    tittle:""
+    size_hint:1,None
+    height:"40dp"
+    canvas:
+        Color:
+            rgba:33/255,45/255,59/255,1
+        Rectangle:  
+            size:self.size
+            pos:self.pos
+    BtnImg
+        source:"topnavimg/menu24l.png"
+        size_hint:None,1
+        width:"50dp"
+        on_press:root.press_menu()
+    Label
+        text:root.tittle
+        halign:"left"
+        valign:"middle"
+        text_size:self.size
+        font_size:self.height/2.5
+        bold:True
+        
+    
