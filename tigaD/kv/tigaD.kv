@@ -1,0 +1,40 @@
+<NodeX>:
+    name: 'Node 1'
+    pitch:0
+    roll:0
+    yaw:0
+    pos_z:0
+    translate: (0,0,0)
+    scale: (1,1,1)
+    effect: True
+    meshes: ("./data/obj/box.obj",)
+<NodeY>:
+    pitch:0
+    roll:0
+    yaw:0
+    name: 'Node 2'
+    pos_z:0
+    translate: (0,0,0)
+    scale: (1,1,1)
+    effect: False
+    meshes: ("./data/obj/box.obj",)
+<TigaD>:
+    pos_axis_x:0
+    pos_axis_y:0
+    pos_axis_z:0
+    Layout3D
+        size_hint:1,1
+        pos_hint:{"center_x":.5,"center_y":.5}
+      
+        NodeY:
+            alpha_blending:True
+            canvas_size:(1,1)
+            pitch:root.pitch
+            scale:(max(root.size)/root.height*1000,max(root.size)/root.width*1000,2) if root.width>root.height else (root.width/max(root.size)*1000,max(root.size)/root.height*1000,2) 
+            #scale:(min(root.size),min(root.size),2)
+            
+            
+            
+            post_processing: False
+            translate: (0,0,0)
+            Button
