@@ -1,0 +1,41 @@
+<Black>:
+    canvas:
+        Color:
+            rgba:0,0,0,1
+        Rectangle:
+            size:self.size
+            pos:self.pos
+<LinePlot>:
+    pos_hint:{"center_x":.5,"center_y":.5}
+    canvas.before:
+        PushMatrix
+        Translate:
+            x:root.geserkiri
+            y:0
+            z:0
+        Color:
+            rgba:0,1,0,1
+        Line:
+            points:root.points
+            width:1
+    canvas.after:
+        PopMatrix
+<Chart3d>:
+    rl:rl
+    sld:sld
+    LinePlot:
+        id:rl
+    Slider:
+        id:sld
+
+    
+                
+
+            
+                
+
+
+
+
+                
+            

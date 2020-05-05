@@ -1,0 +1,39 @@
+#: import Animation kivy.animation.Animation
+<NodeX>:
+    name: 'Node 1'
+    pitch:0
+    roll:0
+    yaw:0
+    pos_z:0
+    translate: (0,0,0)
+    scale: (1,1,1)
+    effect: True
+    meshes: ("./data/obj/box.obj",)
+<NodeY>:
+    pitch:0
+    roll:0
+    yaw:0
+    name: 'Node 2'
+    pos_z:0
+    translate: (0,0,0)
+    scale: (1,1,1)
+    effect: False
+    meshes: ("./data/obj/2dbox.obj",)
+<TigaD>:
+    id:tg
+    pos_axis_x:0
+    pos_axis_y:0
+    pos_axis_z:0
+    fact:12
+    Layout3D
+        size_hint:1,1
+        pos_hint:{"center_x":.5,"center_y":.5}
+        post_processing: False
+        canvas_size: (root.width,root.height)
+        NodeY:
+            pitch:root.pitch-180
+            scale:(max(root.size)/root.height/root.fact,max(root.size)/root.width/root.fact,.01) if root.width>root.height else (root.width/max(root.size)/root.fact,max(root.size)/root.height/root.fact,.01)
+            BoxLayout
+                Button:
+                    text:"sooko.io"
+             

@@ -1,3 +1,4 @@
+#: import Animation kivy.animation.Animation
 <NodeX>:
     name: 'Node 1'
     pitch:0
@@ -19,22 +20,66 @@
     effect: False
     meshes: ("./data/obj/box.obj",)
 <TigaD>:
+    id:tg
     pos_axis_x:0
     pos_axis_y:0
     pos_axis_z:0
     Layout3D
         size_hint:1,1
         pos_hint:{"center_x":.5,"center_y":.5}
-      
+        NodeY:
+            alpha_blending:True
+            canvas_size:(10000,10000)
+            pitch:root.pitch
+            scale:(max(root.size)/root.height*500,max(root.size)/root.width*500,2) if root.width>root.height else (root.width/max(root.size)*500,max(root.size)/root.height*500,20) 
+            post_processing: False
+            z:self.scale[0] if self.width > self.height else self.scale[1] 
+            translate: (0,0,-self.z/100)
+            FloatLayout
+                Button:
+                    text:"A"
+                    font_size:self.height/10
+                    on_press:
+                        Animation(pitch=90).start(tg)
+                Slider
         NodeY:
             alpha_blending:True
             canvas_size:(1,1)
             pitch:root.pitch
-            scale:(max(root.size)/root.height*1000,max(root.size)/root.width*1000,2) if root.width>root.height else (root.width/max(root.size)*1000,max(root.size)/root.height*1000,2) 
-            #scale:(min(root.size),min(root.size),2)
-            
-            
-            
+            scale:(max(root.size)/root.height*500,max(root.size)/root.width*500,2) if root.width>root.height else (root.width/max(root.size)*500,max(root.size)/root.height*500,1) 
             post_processing: False
-            translate: (0,0,0)
+            z:self.scale[0] if self.width > self.height else self.scale[1]
+            translate: (0,0,self.z/100)
             Button
+                text:"B"
+                on_press:
+                    Animation(pitch=180).start(tg)
+        NodeY:
+            alpha_blending:True
+            canvas_size:(1,1)
+            pitch:root.pitch+90
+            scale:(max(root.size)/root.height*500,max(root.size)/root.width*500,2) if root.width>root.height else (root.width/max(root.size)*500,max(root.size)/root.height*500,1) 
+            post_processing: False
+            z:self.scale[0] if self.width > self.height else self.scale[1]
+            translate: (0,0,self.z/100)
+            Button
+                text:"C"
+                on_press:
+                    Animation(pitch=270).start(tg)
+        NodeY:
+            alpha_blending:True
+            canvas_size:(1,1)
+            pitch:root.pitch-90
+            scale:(max(root.size)/root.height*500,max(root.size)/root.width*500,2) if root.width>root.height else (root.width/max(root.size)*500,max(root.size)/root.height*500,1) 
+            post_processing: False
+            z:self.scale[0] if self.width > self.height else self.scale[1]
+            translate: (0,0,self.z/100)
+            Button:
+                text:"D"
+                font_size:self.height
+                on_press:
+                    Animation(pitch=0).start(tg)
+                    
+
+     
+          
