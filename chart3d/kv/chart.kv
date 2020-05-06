@@ -1,0 +1,77 @@
+<Mayor_x>:
+    size_hint:None,1
+    width:sp(1)
+    canvas:
+        Color:
+            rgba:1,1,1,.6
+        Rectangle:
+            size:self.size
+            pos:self.pos
+<Mayor_y>:
+    size_hint:1,None
+    height:sp(1)
+    canvas:
+        Color:
+            rgba:1,1,1,.6
+        Rectangle:
+            size:self.size
+            pos:self.pos
+<Label_x>:
+<Label_y>:
+    canvas.before:
+        PushMatrix
+        Rotate:
+            angle:45
+            origin:self.center
+    canvas.after:
+        PopMatrix
+<Chart>:
+    pos_hint:{"center_x":.5,"center_y":.5}
+    BoxLayout
+        pos_hint:{"center_x":.5,"center_y":.5}
+        BoxLayout:
+            orientation:"vertical"
+            size_hint:None,None
+            height:dp(self.parent.height)-dp(30)
+            width:dp(30)
+            font_size:self.width
+            pos_hint:{"center_x":.5,"top":1}
+            id:root_plot_label_y
+            canvas.before:
+                PushMatrix
+                Translate:
+                    x:0
+                    y:self.height/root.major_y/2
+                    z:0
+            canvas.after:
+                PopMatrix
+        BoxLayout
+            pos_hint:{"center_x":.5,"center_y":.5}
+            orientation:"vertical"
+            FloatLayout:
+                pos_hint:{"center_x":.5,"center_y":.5}
+                FloatLayout
+                    id:root_plot
+                    size_hint:1,1
+                    pos_hint:{"center_x":.5,"center_y":.5}
+                    on_size:root.change_size()
+                    on_pos:root.change_size()
+                Plot:
+                    size_hint:1,1
+                    pos_hint:{"center_x":.5,"center_y":.5}
+                    id:plt
+            BoxLayout
+                size_hint:1,None
+                height:dp(30)
+                pos_hint:{"center_x":.5,"center_y":.5}
+                id:root_plot_label_x
+                font_size:self.height/2
+                canvas.before:
+                    PushMatrix
+                    Translate:
+                        x:self.width/root.major_x/2
+                        y:0
+                        z:0
+                canvas.after:
+                    PopMatrix
+                

@@ -20,7 +20,7 @@ class LinePlot(Widget):
     def __init__(self, **kwargs):
         super(LinePlot,self).__init__(**kwargs)
     def on_parent(self,*args):
-        Clock.schedule_once(self.delay,.5)
+        Clock.schedule_once(self.delay,.2)
         self.width_area=self.width
         self.height_area=self.height
         self.x_point=self.x
@@ -52,15 +52,15 @@ class LinePlot(Widget):
 class Chart3d(FloatLayout):
     count=NumericProperty(0)
     laju_x=NumericProperty(1)
+    lahu_y=NumericProperty(0)
+    max_x=NumericProperty(10)
+    max_y=NumericProperty(10)
     def __init__(self,*args, **kwargs):
         super(Chart3d,self).__init__(*args,**kwargs)
-        Clock.schedule_once(self.delay,1)
-    def delay(self,dt):
-        Clock.schedule_interval(self.timer,.1)
-    def timer(self,dt):
-        self.count+=self.laju_x
-        self.rl.draw_line([self.count,self.sld.value],self.laju_x)
         
+    def drawline(self):
+        self.count+=self.laju_x
+        self.rl.draw_line([self.laju_x,self.laju_y],self.laju_x)
 class C(App):
     def build(self):
         return Chart3d()
